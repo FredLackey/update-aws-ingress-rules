@@ -22,6 +22,16 @@ Think this was a bit too much for a simple process.  It worked, granted, kinda f
 
 Simplified the steps into simply, first, remove all ingress rules and, second, add my public IP to ingress rules for both TCP and UDP.
 
+Usage:  
+```bash
+./update-sh <profile_name> <security_group_id>
+```
+Example:  
+```bash
+./update-sh personal sg-01234567890123456789
+```
+
+
 ## Contact Info  
 
 **Fred Lackey**  
