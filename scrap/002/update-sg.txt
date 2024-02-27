@@ -1,8 +1,0 @@
-Update multiple groups with multiple staticc IPs for a specific port:
-./update-sg.sh profileName "groupId1 groupId2" "fixedIp1 fixedIp2" [port]
-
-Update a single security group with my current IP address for a specific port:
-./update-sg.sh pbx "sg-01234567890123456" "" 22
-
-Update the group with both my IP address as well as a wildcard for ANY incoming address (aka "wide open");
-./update-sg.sh pbx "sg-031302053a01864a1" "0.0.0.0" 22

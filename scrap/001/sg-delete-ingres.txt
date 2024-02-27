@@ -1,1 +1,0 @@
-./sg-delete-all.sh pbx sg-022220f50b5df7f56
