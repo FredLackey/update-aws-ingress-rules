@@ -12,6 +12,16 @@ There are many reasons why we may want to restrict access to AWS resources to a 
 
 The phone system my family and home office use was created from an ISO and is hosted in AWS.  By default the instance has outbound access.  Inbound access should be restricted to my wife and my home office.  Our phones need to connect tothe PBX and we need to be able to reach the web interface from our home office.  However, we don't need this access from anywhere else.  Also complicating the scenario is our use of Starlink, as an ISP, and the fact that our IP address is dynmaic and can change at any tmie.  One way of tackling this is with a point-to-point VPN.  However, this is overkill for our needs.  Instead, we can use the script in this repository to update the AWS Security Group Ingress Rules with our current public IP address.  Whenever it is run, the script will determine our current public IP address and then leverage the AWS CLI to replace the existing Ingress Rules with the new IP address.
 
+## Version History
+
+### v001 - First Draft  
+
+Think this was a bit too much for a simple process.  It worked, granted, kinda felt messy and quite a bit unneccesary.
+
+### v002 - Simplify & Split  
+
+Simplified the steps into simply, first, remove all ingress rules and, second, add my public IP to ingress rules for both TCP and UDP.
+
 ## Contact Info  
 
 **Fred Lackey**  
