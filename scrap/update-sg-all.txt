@@ -1,0 +1,12 @@
+./update-sg-all.sh pbx sg-01234567890123456
+
+./update-sg-all.sh pbx sg-0a23b51516adda844
+
+
+
+aws ec2 revoke-security-group-egress --group-id YOUR_SECURITY_GROUP_ID --protocol -1 --cidr 0.0.0.0/0
+
+
+aws ec2 revoke-security-group-egress --profile pbx --group-id sg-0a23b51516adda844 --protocol -1 --cidr 0.0.0.0/0
+
+aws ec2 describe-security-groups --profile pbx --group-ids sg-0a23b51516adda844

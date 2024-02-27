@@ -2,7 +2,7 @@
 
 main() {
 
-    if [ "$#" -lt 2 ]; then
+    if [ "$#" -lt 3 ]; then
         echo "Usage: $0 profileName groupIds fixedIps [port]"
         exit 1
     fi
@@ -10,7 +10,7 @@ main() {
     local profileName=$1
     local groupIds=$2
     local fixedIps=$3
-    local port=$4 # Allow port to be passed in
+    local port=${4:-22} # Set default port to 22 if not provided
     local newIp=$(curl -s https://api.ipify.org);
 
     echo "PROFILE: $profileName"
@@ -31,12 +31,8 @@ main() {
       done
 
       # Add my IP just in case it has changed
-      echo "ADD MY IP: $groupId | $newIp"
-      if [ -n "$port" ]; then
-        echo "aws ec2 authorize-security-group-ingress --profile=$profileName --protocol tcp --port $port --cidr ${newIp}/32 --group-id $groupId"
-      else
-        echo "aws ec2 authorize-security-group-ingress --profile=$profileName --protocol all --port all --cidr ${newIp}/32 --group-id $groupId"
-      fi
+      echo "ADD MY IP: $groupId | $fixedIp"
+      echo "aws ec2 authorize-security-group-ingress --profile=$profileName --protocol tcp --port $port --cidr ${myIp}/32 --group-id $groupId"
 
       # Loop through fixed IPs
       for fixedIp in $fixedIps; do

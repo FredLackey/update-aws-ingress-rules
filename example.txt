@@ -1,1 +1,0 @@
-./update-sg.sh profileName "groupId1 groupId2" "fixedIp1 fixedIp2" [port]
