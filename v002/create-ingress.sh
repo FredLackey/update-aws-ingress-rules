@@ -7,26 +7,16 @@ main() {
         exit 1
     fi
 
+    export AWS_PAGER=""
+
     local profile_name="$1"
     local group_id="$2"
 
     # Detect current public IP address
     public_ip=$(curl -s https://api.ipify.org)
 
-    # Create ingress rules for TCP and UDP traffic from the public IP
-    aws ec2 authorize-security-group-ingress \
-        --profile "$profile_name" \
-        --group-id "$group_id" \
-        --protocol tcp \
-        --port 0-65535 \
-        --cidr "$public_ip/32"
-
-    aws ec2 authorize-security-group-ingress \
-        --profile "$profile_name" \
-        --group-id "$group_id" \
-        --protocol udp \
-        --port 0-65535 \
-        --cidr "$public_ip/32"
+    eval "aws ec2 authorize-security-group-ingress --profile $profile_name --group-id $group_id --protocol tcp --port 0-65535 --cidr $public_ip/32 --no-paginate"
+    eval "aws ec2 authorize-security-group-ingress --profile $profile_name --group-id $group_id --protocol udp --port 0-65535 --cidr $public_ip/32 --no-paginate"
 
     echo "Ingress rules for TCP and UDP traffic from your current public IP ($public_ip) have been successfully added to the security group."
 }

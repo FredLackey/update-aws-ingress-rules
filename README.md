@@ -16,21 +16,23 @@ The phone system my family and home office use was created from an ISO and is ho
 
 ### v001 - First Draft  
 
-Think this was a bit too much for a simple process.  It worked, granted, kinda felt messy and quite a bit unneccesary.
+Think this was a bit too much for a simple process.  It worked, granted, but kinda felt messy and quite a bit unneccesary.
 
 ### v002 - Simplify & Split  
 
-Simplified the steps into simply, first, remove all ingress rules and, second, add my public IP to ingress rules for both TCP and UDP.
+Split the steps into simple scripts which, first, removes all ingress rules and, second, adds our public IP to ingress rules for both TCP and UDP.
 
 Usage:  
-```bash
+
+```bash  
 ./update-sh <profile_name> <security_group_id>
-```
+```  
+
 Example:  
-```bash
+
+```bash  
 ./update-sh personal sg-01234567890123456789
 ```
-
 
 ## Contact Info  
 
