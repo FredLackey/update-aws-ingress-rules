@@ -8,8 +8,10 @@ main() {
     exit 1
   fi
 
-  eval "./remove-ingress.sh $1 $2"
-  eval "./create-ingress.sh $1 $2"
+  SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+  eval "$SCRIPTPATH/remove-ingress.sh $1 $2"
+  eval "$SCRIPTPATH/create-ingress.sh $1 $2"
 
 }
 
