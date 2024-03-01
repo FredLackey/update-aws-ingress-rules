@@ -2,6 +2,8 @@
 
 main() {
 
+  PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin/jq
+
   # Check if at least two arguments are provided
   if [ $# -lt 2 ]; then
     echo "Usage: $0 <profile-name> <security-group-id>"

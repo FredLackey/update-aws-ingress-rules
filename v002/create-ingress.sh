@@ -1,6 +1,9 @@
 #!/bin/bash
 
 main() {
+
+  PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin/jq
+
   # Check if profile name and security group ID are provided
   if [ $# -lt 2 ]; then
     echo "Usage: $0 <profile-name> <security-group-id>"
